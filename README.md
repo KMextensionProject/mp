@@ -9,3 +9,11 @@ The key idea is **custom repeat/skip control in the playlist**:
 * If the repeat count is set to **N > 0**, the song will be played **N times in a row** before moving on to the next track.
 
 :fire: This way, the playlist can be adapted to the listener’s mood without deleting or permanently modifying it. Songs you don’t feel like hearing can be skipped, while favorites can play multiple times, all within the same playlist session.
+
+---
+
+### Future Enhancement: Mood Tags
+
+Another feature idea is to allow **mood-based playlist tags**.  
+You could mark each playlist with one or more *mood tags* (for example: `chill`, `energetic`, `focus`).  
+When starting playback, you’d select a mood, and the app would automatically load the repeat/skip settings that match that mood—so you don’t have to manually tweak repeat counts every time your mood changes.
