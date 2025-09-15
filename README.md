@@ -17,3 +17,11 @@ The key idea is **custom repeat/skip control in the playlist**:
 Another feature idea is to allow **mood-based playlist tags**.  
 You could mark each playlist with one or more *mood tags* (for example: `chill`, `energetic`, `focus`).  
 When starting playback, you’d select a mood, and the app would automatically load the repeat/skip settings that match that mood—so you don’t have to manually tweak repeat counts every time your mood changes.
+
+### How to Run
+
+Make sure you have Java 21 installed, then run:
+
+```bash
+mvn clean javafx:run
+```
