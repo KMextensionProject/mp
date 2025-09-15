@@ -23,11 +23,11 @@ public class Playlist {
 		while (true) {
 			if (currentIndex == -1 || currentRepeatLeft == 0) {
 				currentIndex++;
-				if (currentIndex >= songs.size())
+				if (currentIndex >= songs.size()) {
 					return null;
+				}
 				currentRepeatLeft = songs.get(currentIndex).getRepeatCount();
 			}
-
 			if (currentRepeatLeft > 0) {
 				currentRepeatLeft--;
 				return songs.get(currentIndex);

@@ -1,14 +1,17 @@
 package sk.mkrajcovic.mp;
 
+import java.io.File;
+
 import javafx.geometry.Insets;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
-import java.io.File;
+import javafx.stage.FileChooser;
 
 public class PlayerUI {
 
@@ -30,8 +33,9 @@ public class PlayerUI {
 
 		Button stopBtn = new Button("Stop");
 		stopBtn.setOnAction(e -> {
-			if (mediaPlayer != null)
+			if (mediaPlayer != null) {
 				mediaPlayer.stop();
+			}
 		});
 
 		HBox controls = new HBox(10, addBtn, playBtn, stopBtn);
@@ -57,6 +61,7 @@ public class PlayerUI {
 				try {
 					repeat = Integer.parseInt(result.get());
 				} catch (NumberFormatException ignored) {
+					ignored.printStackTrace();
 				}
 			}
 
@@ -65,31 +70,17 @@ public class PlayerUI {
 			playlistView.getItems().setAll(playlist.getSongs());
 		}
 	}
-	
-	// support reordering...
 
 	private void playNext() {
 		Song next = playlist.nextSong();
-		// restart - go from 1st .. nevolat next ak bol playlist stopnuty, treba ist odzaciatku
-		// volat resume/repeat toho isteho ak bolo pausenute
-		if (next==null) {playlist.reset(); next=playlist.nextSong();}
-//		if (next == null) {
-			//zatial takto
-//			showAlert("End of playlist!");
-//			return;
-//		}
-
-//		if (mediaPlayer != null)
-//			mediaPlayer.stop();
+		if (next == null) {
+			playlist.reset();
+			next = playlist.nextSong();
+		}
 
 		Media media = new Media(new File(next.getPath()).toURI().toString());
 		mediaPlayer = new MediaPlayer(media);
 		mediaPlayer.setOnEndOfMedia(this::playNext);
 		mediaPlayer.play();
-	}
-
-	private void showAlert(String msg) {
-		Alert alert = new Alert(Alert.AlertType.INFORMATION, msg, ButtonType.OK);
-		alert.showAndWait();
 	}
 }
