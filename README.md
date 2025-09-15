@@ -1,7 +1,5 @@
 # Java Music Player Feature
 
-This project is a simple Java standalone music player with a unique feature that makes it different from other players.
-
 The key idea is **custom repeat/skip control in the playlist**, and also to use this desktop demonstration as a starting point for <u>later forking or adapting an open-source Android music player</u>, so the same concept can eventually run on a phone.
 
 * Each song in the playlist has a **repeat count**.
